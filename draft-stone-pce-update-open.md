@@ -50,7 +50,7 @@ The Path Computation Element Communication Protocol (PCEP) [RFC5440] provides me
 
 Additionally, [RFC5440] describes a Notification Message (PCNtf) containing a NOTIFICATION Object, which a PCEP Speaker may use to notify the other speaker of an event.
 
-This document proposes a generic mechanism that allows a PCEP Speaker to update previously exchanged Open Message information using a PCNtf Message, known as an Open Refresh. This approach mitigates the need to tear down the session to modify any exchanged information. 
+This document proposes a generic mechanism that allows a PCEP Speaker to update previously exchanged Open Message information using a PCNtf Message, known as an Open Refresh. This approach mitigates the need to tear down the session to modify any exchanged information.
 
 Note that [draft-ietf-pce-state-sync] also proposes using PCNtf Message to relay PcOpen messages between PCEs about each PCE's connected peers. It is anticipated that [draft-ietf-pce-state-sync] will be defined in parallel, with unique object definitions, as the semantics of a PCEP Speaker exchanging its own information differ from exchanging information related to a connected peer.
 
@@ -72,7 +72,7 @@ One use case of PcOpen is to exchange device software capabilities and feature e
 
 ## Node-wide property change
 
-One use case of PcOpen is to exchange device-level configurations or settings. In the case of statefully delegated LSPs ([RFC8231], the modification of these values may trigger path calculations for established LSP Objects and/or the possibility of LSP tear down. 
+One use case of PcOpen is to exchange device-level configurations or settings. In the case of statefully delegated LSPs ([RFC8231], the modification of these values may trigger path calculations for established LSP Objects and/or the possibility of LSP tear down.
 
 # Open Refresh Procedures
 
