@@ -9,8 +9,8 @@ number:
 date: {DATE}
 consensus: true
 v: 3
-area: Routing
-workgroup: PCE Working Group
+area: "Routing"
+workgroup: "Path Computation Element"
 
 author:
  -
