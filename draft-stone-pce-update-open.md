@@ -44,26 +44,62 @@ The Path Computation Element Communication Protocol (PCEP) [RFC5440] provides me
 
 [RFC5440] outlines the message exchange procedures that PCEP Speakers must follow upon initial connection to establish a PCEP Peer relationship. This procedure includes sending an Open message containing an OPEN Object, which conveys various session characteristics such as protocol timers. The OPEN Object can be extended with TLVs to convey additional session characteristics, such as PCE capabilities (e.g., [RFC8408]) or specific values and ranges (e.g., [RFC8664] and [draft-ietf-pce-controlled-id-space]). This information is exchanged only once per session and cannot be dynamically modified without tearing down and re-establishing the PCEP session, which can be operationally disruptive.
 
-Additionally, [RFC5440] describes a Notification message (PcNtf) containing a NOTIFICATION Object, which a PCEP Speaker may use to notify the other speaker of an event.
+Additionally, [RFC5440] describes a Notification Message (PCNtf) containing a NOTIFICATION Object, which a PCEP Speaker may use to notify the other speaker of an event.
 
-This document proposes a generic mechanism that allows a PCEP Speaker to update previously exchanged Open Message information using a PcNtf message. This approach mitigates the need to tear down the session to modify any exchanged information.
+This document proposes a generic mechanism that allows a PCEP Speaker to update previously exchanged Open Message information using a PCNtf Message, known as an Open Refresh. This approach mitigates the need to tear down the session to modify any exchanged information. 
 
-Note that [draft-ietf-pce-state-sync] also proposes using PcNtf to relay PcOpen messages between PCEs about each PCE's connected peers. It is anticipated that [draft-ietf-pce-state-sync] will be defined in parallel, with unique object definitions, as the semantics of a PCEP Speaker exchanging its own information differ from exchanging information related to a connected peer.
+Note that [draft-ietf-pce-state-sync] also proposes using PCNtf Message to relay PcOpen messages between PCEs about each PCE's connected peers. It is anticipated that [draft-ietf-pce-state-sync] will be defined in parallel, with unique object definitions, as the semantics of a PCEP Speaker exchanging its own information differ from exchanging information related to a connected peer.
 
-
+This documented describes a generic extension and mechanism to update PC Open content but future documents MAY describe further semantics on a per TLV basis.
 
 # Conventions and Definitions
 
 {::boilerplate bcp14-tagged}
 
+Open Refresh : The act of modifying content previously exchanged during PCEP Open message in an ad-hoc manner without tearing down the PCEP session.
 
 # Operational considerations
 
-todo
+This section discusses some high level considerations that should be considered when supporting Open Refresh. While scenarios described here exist in present day PCEP, they require explicitly tearing down the PCEP session which gives a clear indication of potential system impact. With ad-hoc manipulation of open information, the impact of a possible change may not be evident so this section attempts to describe some of these considerations.
 
-# PcNtf Message procedures
+## Capability change
 
-todo2
+One use case of PcOpen is to exchange device software capabilities to determine whether a PCEP Speaker may support a given operation defined in PCEP extensions. If a PCEP speaker supports removal of a capability using Open Refresh, then all state related to the capability MUST be reset and removed and MUST follow the guidelines set out by the capability should the other PCEP no longer support the capability. This may impact device wide state and network traffic. For example, [RFC8281] defines the STATEFUL-PCE-CAPABILITY-TLV to indicate support for PCE-Initiated LSPs. The removal of this capability would result in PCE-Initiated LSPs being deleted from each PCEP Speaker.
+
+## Node-wide property change
+One use case of PcOpen is to exchange device-level configurations or settings. In the case of statefully delegated LSPs ([RFC8231], the modification of these values may trigger path calculations for established LSP Objects and/or the possibility of LSP tear down. 
+
+# Open Refresh Procedures
+
+## Capability Advertisement
+
+A PCEP Speaker indicates support of Open Refresh during the PCEP Initialization phase ([RFC5440]). As per RFC5440, a PCEP Speaker MUST send a PCEP Open message with exactly one OPEN object. The PCEP speaker indicates support for Open Refresh by setting the OPEN-REFRESH (R-Bit) to 1 in the PCEP Open Message Flags field.
+
+IANA is requested to allocate the R-Bit from the Open Object Flag Field registry. 
+
+* R (OPEN-REFRESH-CAPABILITY - 1 bit - TBD1): If set to 1 by a PCEP speaker, the PCEP speaker indicates that the session supports receiving an Open Refresh.
+
+If a PCEP speaker receives an Open message which does not contain the OPEN-REFRESH-CAPABILITY, the PCEP Speaker MUST NOT send Open Refresh messages to the remote speaker.
+
+## PcNotify message
+
+An Open Refresh is transmitted by sending a PCNtf Message ([RFC5440]) containing a NOTIFICATION Object with Notification-type=TBD2 (Open-Refresh). 
+
+// TODO below, on the fence about it. Could use the value to indicate add/remove/modify of a given TLV rather than sending a full snapshot.
+// TODO But i'm on the fence if it would be better or worse to encode a snapshot vs individual diff changes. Open to supporting signalling add/remove/modify.
+
+The Open-Refresh NOTIFICATION Object Notification-value MUST be set to zero. 
+
+The Open-RefreshNOTIFICATION Object encodes any TLV which may be encoded in an OPEN Object.
+
+The Open-RefreshNOTIFICATION Object contains a snapshot of all unmodified and modified TLVs.
+
+Upon receiving an Open-Refresh NOTIFICATION Object, a Speaker MUST compare the newly received TLVs with the previously received TLVs to determine what has changed. 
+
+An omission of a TLV MUST be treated as a removal of the TLV and perform necessary operations as if the TLV was never exchanged during PcOpen. 
+
+If the PCEP Speaker determines it cannot support the Open-Refresh differential changes, the PCEP Speaker generate a PCEP Error (PCErr) with Error-type=TBD3 (Unsupported-Open-Refresh) and error-value TBD4 and it SHOULD terminate the PCEP session.
+
 
 # Security Considerations
 
