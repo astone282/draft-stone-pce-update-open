@@ -144,4 +144,4 @@ IANA is requested to allocate a new Notification-type value in the NOTIFICATION 
 # Acknowledgments
 {:numbered="false"}
 
-The authors would like to acknowledge Dhruv Dhody for his discussion and ideas related to this document.
+The authors would like to acknowledge Dhruv Dhody for discussion and ideas related to this document.
