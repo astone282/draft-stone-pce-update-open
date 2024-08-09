@@ -54,13 +54,14 @@ This document proposes a generic mechanism that allows a PCEP Speaker to update 
 
 Note that [draft-ietf-pce-state-sync] also proposes using PCNtf Message to relay PcOpen Messages between PCEs about each PCE's connected peers. It is anticipated that [draft-ietf-pce-state-sync] will be defined in parallel, with unique object definitions, as the semantics of a PCEP Speaker exchanging its own information differ from exchanging information related to a connected peer.
 
-This documented describes a generic extension and mechanism to update Open Object content but future documents MAY describe further semantics on a per TLV basis.
+This document describes a generic extension and mechanism to update Open Object content but future documents MAY describe further semantics on a per TLV basis.
 
 # Conventions and Definitions
 
 {::boilerplate bcp14-tagged}
 
 Open Refresh : The act of modifying content previously exchanged during PCEP Open Message in an ad-hoc manner without terminating the PCEP session.
+Open Refresh Notification message: An Open Refresh notification message is a new type of PCNtf Message ([RFC5440]) containing the  information in the Open message.
 
 # Operational considerations
 
@@ -78,11 +79,9 @@ One use case of PcOpen is to exchange device-level configurations or settings. I
 
 ## Capability Advertisement
 
-A PCEP Speaker indicates support of Open Refresh during the PCEP Initialization phase ([RFC5440]). As per RFC5440, a PCEP Speaker MUST send a PCEP Open Message with exactly one OPEN object. The PCEP speaker indicates support for Open Refresh by setting the OPEN-REFRESH-CAPABILITY (R-Bit) to 1 in the PCEP Open Message Flags field.
+A PCEP Speaker indicates support of Open Refresh during the PCEP Initialization phase ([RFC5440]). As per RFC5440, a PCEP Speaker MUST send a PCEP Open Message with exactly one OPEN object. This document defines a new flag, OPEN-REFRESH-CAPABILITY (R-bit), in the Open Message Flags fieldto indicate the support of Open Refresh feature. 
 
-IANA is requested to allocate the R-Bit from the Open Object Flag Field registry.
-
-* R (OPEN-REFRESH-CAPABILITY - 1 bit - TBD1): If set to 1 by a PCEP speaker, the PCEP speaker indicates that the session supports receiving an Open Refresh message.
+* R (OPEN-REFRESH-CAPABILITY - 1 bit - TBD1): If set to 1 by a PCEP speaker, the PCEP speaker indicates that the PCEP speaker supports updating the information in Open message without resetting the session.
 
 If a PCEP speaker receives an Open Message which does not contain the OPEN-REFRESH-CAPABILITY, the PCEP Speaker MUST NOT send Open Refresh messages to the remote speaker.
 
@@ -90,7 +89,7 @@ If a PCEP speaker receives an Open Message which does not contain the OPEN-REFRE
 
 An Open Refresh is transmitted by sending a PCNtf Message ([RFC5440]) containing a NOTIFICATION Object with Notification-type=TBD2 (Open-Refresh).
 
-// TODO below, on the fence about it. Could use the value to indicate add/remove/modify of a given TLV rather than sending a full snapshot.
+// TODO below, on the fence about it. Could use the value to indicate add/remove/modify of a given TLV rather than sending a full snapshot. Cheng: if only for sending updated INFO in Open msg to PCE, then we do not need to difine any actions, just send what it is in the open message now. It is easier for now. Let leave the actions to the future, if more complicated actions are needed.
 
 // TODO But i'm on the fence if it would be better or worse to encode a snapshot vs individual diff changes. Open to supporting signalling add/remove/modify.
 
