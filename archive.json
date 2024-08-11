@@ -1,0 +1,81 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2024-08-11T00:57:53.406754+00:00",
+  "repo": "astone282/draft-stone-pce-update-open",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOMhFslc539ieQ",
+      "title": "Update draft-stone-pce-update-open.md",
+      "url": "https://github.com/astone282/draft-stone-pce-update-open/pull/1",
+      "state": "OPEN",
+      "author": "muzixing",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Editorial update, please see the details.",
+      "createdAt": "2024-08-09T15:28:22Z",
+      "updatedAt": "2024-08-09T15:28:23Z",
+      "baseRepository": "astone282/draft-stone-pce-update-open",
+      "baseRefName": "main",
+      "baseRefOid": "2c6f800ee2c73ebb6e3eb7bf2d3743373db6c4e6",
+      "headRepository": "muzixing/draft-stone-pce-update-open",
+      "headRefName": "main",
+      "headRefOid": "1423bea604545472f2ffe03ca3d40101f4959723",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
