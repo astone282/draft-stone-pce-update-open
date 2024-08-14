@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/8fd01663-c8b1-4f2d-aa4b-666936098fdc)---
+---
 title: "Path Computation Element Communication Protocol (PCEP) extensions for updating Open Message content"
 abbrev: "PCEP-UPDATE-OPEN"
 category: std
