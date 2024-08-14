@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>PCEP extensions for updating Open Message content</title>
+<title>Path Computation Element Communication Protocol (PCEP) extensions for updating Open Message content</title>
 <meta content="Andrew Stone" name="author">
 <meta content="Cheng Li" name="author">
 <meta content="Samuel Sidor" name="author">
 <meta content="
-       This document describes extensions to Path Computation Element Protocol (PCEP) to permit a PCEP Speaker to update information previously exchanged during PCEP Open procedures. 
+       This document describes extensions to Path Computation Element Protocol (PCEP) to permit a PCEP Speaker to update information previously exchanged during PCEP session establishment. 
     " name="description">
 <meta content="xml2rfc 3.22.0" name="generator">
 <meta content="draft-stone-pce-update-open-latest" name="ietf.draft">
@@ -1029,7 +1029,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Stone, et al.</td>
-<td class="center">Expires 9 February 2025</td>
+<td class="center">Expires 15 February 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1037,17 +1037,17 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <div id="internal-metadata" class="document-information">
 <dl id="identifiers">
 <dt class="label-workgroup">Workgroup:</dt>
-<dd class="workgroup">Path Computation Element</dd>
+<dd class="workgroup">PCE Working Group</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
 <dd class="internet-draft">draft-stone-pce-update-open-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-08-08" class="published">8 August 2024</time>
+<time datetime="2024-08-14" class="published">14 August 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-02-09">9 February 2025</time></dd>
+<dd class="expires"><time datetime="2025-02-15">15 February 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1065,10 +1065,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">PCEP extensions for updating Open Message content</h1>
+<h1 id="title">Path Computation Element Communication Protocol (PCEP) extensions for updating Open Message content</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document describes extensions to Path Computation Element Protocol (PCEP) to permit a PCEP Speaker to update information previously exchanged during PCEP Open procedures.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This document describes extensions to Path Computation Element Protocol (PCEP) to permit a PCEP Speaker to update information previously exchanged during PCEP session establishment.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1100,7 +1100,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 9 February 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 15 February 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1131,15 +1131,20 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <nav class="toc"><ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-requirements-language" class="internal xref">Requirements Language</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
-            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
+            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-operational-considerations" class="internal xref">Operational considerations</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
-                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-capability-change" class="internal xref">Capability change</a></p>
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-capability-change" class="internal xref">Capability change</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-node-wide-property-change" class="internal xref">Node-wide property change</a></p>
@@ -1203,21 +1208,29 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-1-1">The Path Computation Element Communication Protocol (PCEP) <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span> provides mechanisms for Path Computation Elements (PCEs) to perform path computations in response to requests from Path Computation Clients (PCCs).<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2"><span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span> outlines the message exchange procedures that PCEP Speakers must follow upon initial connection to establish a PCEP Peer relationship. This procedure includes sending an Open Message containing an OPEN Object, which conveys various session characteristics such as protocol timers. The OPEN Object can be extended with TLVs to convey additional session characteristics, such as PCE capabilities (e.g., <span>[<a href="#RFC8408" class="cite xref">RFC8408</a>]</span>) or specific values and ranges (e.g., <span>[<a href="#RFC8664" class="cite xref">RFC8664</a>]</span> and [draft-ietf-pce-controlled-id-space]). This information is exchanged only once per session and cannot be dynamically modified without tearing down and re-establishing the PCEP session, which can be operationally disruptive.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">Additionally, <span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span> describes a Notification Message (PCNtf) containing a NOTIFICATION Object, which a PCEP Speaker may use to notify the other speaker of an event.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">This document proposes a generic mechanism that allows a PCEP Speaker to update previously exchanged Open Message information using a PCNtf Message, known as an Open Refresh. This approach mitigates the need to terminate the session to modify any exchanged information.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-4">This document proposes a generic mechanism that allows a PCEP Speaker(PCC or PCE) to update previously exchanged Open Message information using a PCNtf Message, known as an Open Refresh. This approach mitigates the need to terminate the session to modify any exchanged information.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">Note that [draft-ietf-pce-state-sync] also proposes using PCNtf Message to relay PcOpen Messages between PCEs about each PCE's connected peers. It is anticipated that [draft-ietf-pce-state-sync] will be defined in parallel, with unique object definitions, as the semantics of a PCEP Speaker exchanging its own information differ from exchanging information related to a connected peer.<a href="#section-1-5" class="pilcrow">¶</a></p>
-<p id="section-1-6">This documented describes a generic extension and mechanism to update Open Object content but future documents <span class="bcp14">MAY</span> describe further semantics on a per TLV basis.<a href="#section-1-6" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="conventions-and-definitions">
-<section id="section-2">
-      <h2 id="name-conventions-and-definitions">
-<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-conventions-and-definitions" class="section-name selfRef">Conventions and Definitions</a>
-      </h2>
-<p id="section-2-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
+<p id="section-1-6">This document describes a generic extension and mechanism to update Open Object content but future documents <span class="bcp14">MAY</span> describe further semantics on a per TLV basis.<a href="#section-1-6" class="pilcrow">¶</a></p>
+<div id="requirements-language">
+<section id="section-1.1">
+        <h3 id="name-requirements-language">
+<a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-requirements-language" class="section-name selfRef">Requirements Language</a>
+        </h3>
+<p id="section-1.1-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
 "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
 described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
-appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2">Open Refresh : The act of modifying content previously exchanged during PCEP Open Message in an ad-hoc manner without terminating the PCEP session.<a href="#section-2-2" class="pilcrow">¶</a></p>
+appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="terminology">
+<section id="section-2">
+      <h2 id="name-terminology">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-terminology" class="section-name selfRef">Terminology</a>
+      </h2>
+<p id="section-2-1">Open Refresh : The act of modifying content previously exchanged during PCEP Open Message in an ad-hoc manner without terminating the PCEP session.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">Open Refresh Notification message: An Open Refresh notification message is a new type of PCNtf Message (<span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>) containing the  information in the Open message.<a href="#section-2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="operational-considerations">
@@ -1254,14 +1267,13 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <h3 id="name-capability-advertisement">
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-capability-advertisement" class="section-name selfRef">Capability Advertisement</a>
         </h3>
-<p id="section-4.1-1">A PCEP Speaker indicates support of Open Refresh during the PCEP Initialization phase (<span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>). As per RFC5440, a PCEP Speaker <span class="bcp14">MUST</span> send a PCEP Open Message with exactly one OPEN object. The PCEP speaker indicates support for Open Refresh by setting the OPEN-REFRESH-CAPABILITY (R-Bit) to 1 in the PCEP Open Message Flags field.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1-2">IANA is requested to allocate the R-Bit from the Open Object Flag Field registry.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+<p id="section-4.1-1">A PCEP Speaker indicates support of Open Refresh during the PCEP Initialization phase (<span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>). As per RFC5440, a PCEP Speaker <span class="bcp14">MUST</span> send a PCEP Open Message with exactly one OPEN object. This document defines a new flag, OPEN-REFRESH-CAPABILITY (R-bit), in the Open Message Flags fieldto indicate the support of Open Refresh feature.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.1-3.1">
-            <p id="section-4.1-3.1.1">R (OPEN-REFRESH-CAPABILITY - 1 bit - TBD1): If set to 1 by a PCEP speaker, the PCEP speaker indicates that the session supports receiving an Open Refresh message.<a href="#section-4.1-3.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-4.1-2.1">
+            <p id="section-4.1-2.1.1">R (OPEN-REFRESH-CAPABILITY - 1 bit - TBD1): If set to 1 by a PCEP speaker, the PCEP speaker indicates that the PCEP speaker supports updating the information in Open message without resetting the session.<a href="#section-4.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-4.1-4">If a PCEP speaker receives an Open Message which does not contain the OPEN-REFRESH-CAPABILITY, the PCEP Speaker <span class="bcp14">MUST NOT</span> send Open Refresh messages to the remote speaker.<a href="#section-4.1-4" class="pilcrow">¶</a></p>
+<p id="section-4.1-3">If a PCEP speaker receives an Open Message which does not contain the OPEN-REFRESH-CAPABILITY, the PCEP Speaker <span class="bcp14">MUST NOT</span> send Open Refresh messages to the remote speaker.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="open-refresh">
@@ -1270,13 +1282,12 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-open-refresh" class="section-name selfRef">Open Refresh</a>
         </h3>
 <p id="section-4.2-1">An Open Refresh is transmitted by sending a PCNtf Message (<span>[<a href="#RFC5440" class="cite xref">RFC5440</a>]</span>) containing a NOTIFICATION Object with Notification-type=TBD2 (Open-Refresh).<a href="#section-4.2-1" class="pilcrow">¶</a></p>
-<p id="section-4.2-2">// TODO below, on the fence about it. Could use the value to indicate add/remove/modify of a given TLV rather than sending a full snapshot.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
-<p id="section-4.2-3">// TODO But i'm on the fence if it would be better or worse to encode a snapshot vs individual diff changes. Open to supporting signalling add/remove/modify.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
-<p id="section-4.2-4">The Open-Refresh NOTIFICATION Object Notification-value <span class="bcp14">MUST</span> be set to zero.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
-<p id="section-4.2-5">The Open-Refresh NOTIFICATION Object encodes any TLV which may be encoded in an OPEN Object.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
-<p id="section-4.2-6">The Open-Refresh NOTIFICATION Object contains a snapshot of all unmodified and modified TLVs.<a href="#section-4.2-6" class="pilcrow">¶</a></p>
-<p id="section-4.2-7">Upon receiving an Open-Refresh NOTIFICATION Object, the PCEP Speaker compares the newly received TLVs with the previously received TLVs to determine what has changed. An omission of a TLV <span class="bcp14">MUST</span> be treated as a removal of the TLV and perform necessary side effect(s) to system state as if the TLV was never exchanged during PcOpen.<a href="#section-4.2-7" class="pilcrow">¶</a></p>
-<p id="section-4.2-8">If the PCEP Speaker determines it cannot support the Open-Refresh differential change(s), the PCEP Speaker generates a PCEP Error (PCErr) with Error-type=TBD3 (Unsupported-Open-Refresh) and error-value TBD4 and it <span class="bcp14">SHOULD</span> terminate the PCEP session.<a href="#section-4.2-8" class="pilcrow">¶</a></p>
+<p id="section-4.2-2">The Open-Refresh NOTIFICATION Object Notification-value <span class="bcp14">MUST</span> be set to zero.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.2-3">The Open-Refresh NOTIFICATION Object encodes any TLV which may be encoded in an OPEN Object.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+<p id="section-4.2-4">The Open-Refresh NOTIFICATION Object contains a snapshot of all unmodified and modified TLVs.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
+<p id="section-4.2-5">Upon receiving an Open-Refresh NOTIFICATION Object, the PCEP Speaker compares the newly received TLVs with the previously received TLVs to determine what has changed. An omission of a TLV <span class="bcp14">MUST</span> be treated as a removal of the TLV and perform necessary side effect(s) to system state as if the TLV was never exchanged during PcOpen.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
+<p id="section-4.2-6">Adding/removing values or Sub-TLVs<a href="#section-4.2-6" class="pilcrow">¶</a></p>
+<p id="section-4.2-7">If the PCEP Speaker determines it cannot support the Open-Refresh differential change(s), the PCEP Speaker generates a PCEP Error (PCErr) with Error-type=TBD3 (Unsupported-Open-Refresh) and error-value TBD4 and it <span class="bcp14">SHOULD</span> terminate the PCEP session.<a href="#section-4.2-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>

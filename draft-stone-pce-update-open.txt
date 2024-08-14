@@ -2,23 +2,24 @@
 
 
 
-Path Computation Element                                        A. Stone
+PCE Working Group                                               A. Stone
 Internet-Draft                                                     Nokia
 Intended status: Standards Track                                   C. Li
-Expires: 9 February 2025                                          Huawei
+Expires: 15 February 2025                                         Huawei
                                                                 S. Sidor
                                                                    Cisco
-                                                           8 August 2024
+                                                          14 August 2024
 
 
-           PCEP extensions for updating Open Message content
+ Path Computation Element Communication Protocol (PCEP) extensions for
+                     updating Open Message content
                    draft-stone-pce-update-open-latest
 
 Abstract
 
    This document describes extensions to Path Computation Element
    Protocol (PCEP) to permit a PCEP Speaker to update information
-   previously exchanged during PCEP Open procedures.
+   previously exchanged during PCEP session establishment.
 
 Discussion Venues
 
@@ -46,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 February 2025.
+   This Internet-Draft will expire on 15 February 2025.
 
 Copyright Notice
 
@@ -65,7 +66,8 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction
-   2.  Conventions and Definitions
+     1.1.  Requirements Language
+   2.  Terminology
    3.  Operational considerations
      3.1.  Capability change
      3.2.  Node-wide property change
@@ -106,10 +108,11 @@ Table of Contents
    containing a NOTIFICATION Object, which a PCEP Speaker may use to
    notify the other speaker of an event.
 
-   This document proposes a generic mechanism that allows a PCEP Speaker
-   to update previously exchanged Open Message information using a PCNtf
-   Message, known as an Open Refresh.  This approach mitigates the need
-   to terminate the session to modify any exchanged information.
+   This document proposes a generic mechanism that allows a PCEP
+   Speaker(PCC or PCE) to update previously exchanged Open Message
+   information using a PCNtf Message, known as an Open Refresh.  This
+   approach mitigates the need to terminate the session to modify any
+   exchanged information.
 
    Note that [draft-ietf-pce-state-sync] also proposes using PCNtf
    Message to relay PcOpen Messages between PCEs about each PCE's
@@ -118,11 +121,11 @@ Table of Contents
    semantics of a PCEP Speaker exchanging its own information differ
    from exchanging information related to a connected peer.
 
-   This documented describes a generic extension and mechanism to update
+   This document describes a generic extension and mechanism to update
    Open Object content but future documents MAY describe further
    semantics on a per TLV basis.
 
-2.  Conventions and Definitions
+1.1.  Requirements Language
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
@@ -130,9 +133,15 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
+2.  Terminology
+
    Open Refresh : The act of modifying content previously exchanged
    during PCEP Open Message in an ad-hoc manner without terminating the
    PCEP session.
+
+   Open Refresh Notification message: An Open Refresh notification
+   message is a new type of PCNtf Message ([RFC5440]) containing the
+   information in the Open message.
 
 3.  Operational considerations
 
@@ -171,16 +180,15 @@ Table of Contents
 
    A PCEP Speaker indicates support of Open Refresh during the PCEP
    Initialization phase ([RFC5440]).  As per RFC5440, a PCEP Speaker
-   MUST send a PCEP Open Message with exactly one OPEN object.  The PCEP
-   speaker indicates support for Open Refresh by setting the OPEN-
-   REFRESH-CAPABILITY (R-Bit) to 1 in the PCEP Open Message Flags field.
-
-   IANA is requested to allocate the R-Bit from the Open Object Flag
-   Field registry.
+   MUST send a PCEP Open Message with exactly one OPEN object.  This
+   document defines a new flag, OPEN-REFRESH-CAPABILITY (R-bit), in the
+   Open Message Flags fieldto indicate the support of Open Refresh
+   feature.
 
    *  R (OPEN-REFRESH-CAPABILITY - 1 bit - TBD1): If set to 1 by a PCEP
-      speaker, the PCEP speaker indicates that the session supports
-      receiving an Open Refresh message.
+      speaker, the PCEP speaker indicates that the PCEP speaker supports
+      updating the information in Open message without resetting the
+      session.
 
    If a PCEP speaker receives an Open Message which does not contain the
    OPEN-REFRESH-CAPABILITY, the PCEP Speaker MUST NOT send Open Refresh
@@ -191,14 +199,6 @@ Table of Contents
    An Open Refresh is transmitted by sending a PCNtf Message ([RFC5440])
    containing a NOTIFICATION Object with Notification-type=TBD2 (Open-
    Refresh).
-
-   // TODO below, on the fence about it.  Could use the value to
-   indicate add/remove/modify of a given TLV rather than sending a full
-   snapshot.
-
-   // TODO But i'm on the fence if it would be better or worse to encode
-   a snapshot vs individual diff changes.  Open to supporting signalling
-   add/remove/modify.
 
    The Open-Refresh NOTIFICATION Object Notification-value MUST be set
    to zero.
@@ -214,6 +214,8 @@ Table of Contents
    determine what has changed.  An omission of a TLV MUST be treated as
    a removal of the TLV and perform necessary side effect(s) to system
    state as if the TLV was never exchanged during PcOpen.
+
+   Adding/removing values or Sub-TLVs
 
    If the PCEP Speaker determines it cannot support the Open-Refresh
    differential change(s), the PCEP Speaker generates a PCEP Error
