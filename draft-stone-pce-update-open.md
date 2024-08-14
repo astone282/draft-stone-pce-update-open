@@ -82,7 +82,7 @@ One use case of PcOpen is to exchange device-level configurations or settings. I
 
 ## Capability Advertisement
 
-A PCEP Speaker indicates support of Open Refresh during the PCEP Initialization phase ([RFC5440]). As per RFC5440, a PCEP Speaker MUST send a PCEP Open Message with exactly one OPEN object. This document defines a new flag, OPEN-REFRESH-CAPABILITY (R-bit), in the Open Message Flags fieldto indicate the support of Open Refresh feature. 
+A PCEP Speaker indicates support of Open Refresh during the PCEP Initialization phase ([RFC5440]). As per RFC5440, a PCEP Speaker MUST send a PCEP Open Message with exactly one OPEN object. This document defines a new flag, OPEN-REFRESH-CAPABILITY (R-bit), in the Open Message Flags fieldto indicate the support of Open Refresh feature.
 
 * R (OPEN-REFRESH-CAPABILITY - 1 bit - TBD1): If set to 1 by a PCEP speaker, the PCEP speaker indicates that the PCEP speaker supports updating the information in Open message without resetting the session.
 
@@ -100,7 +100,7 @@ The Open-Refresh NOTIFICATION Object contains a snapshot of all unmodified and m
 
 Upon receiving an Open-Refresh NOTIFICATION Object, the PCEP Speaker compares the newly received TLVs with the previously received TLVs to determine what has changed. An omission of a TLV MUST be treated as a removal of the TLV and perform necessary side effect(s) to system state as if the TLV was never exchanged during PcOpen.
 
-Adding/removing values or Sub-TLVs 
+Adding/removing values or Sub-TLVs
 
 If the PCEP Speaker determines it cannot support the Open-Refresh differential change(s), the PCEP Speaker generates a PCEP Error (PCErr) with Error-type=TBD3 (Unsupported-Open-Refresh) and error-value TBD4 and it SHOULD terminate the PCEP session.
 
