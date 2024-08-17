@@ -84,7 +84,7 @@ One use case of the Open message is to exchange device-level configurations or s
 
 ## Frequency of Open Refresh
 
-A PCEP implementation should consider the impact on the entire network before sending frequent Open Refresh Notifications. It could consider applying some form of dampening or back-off mechanism.  
+A PCEP implementation should consider the impact on the entire network before sending frequent Open Refresh Notifications. It could consider applying some form of dampening or back-off mechanism.
 
 # Procedures
 
