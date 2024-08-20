@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-18T00:57:04.915584+00:00",
+  "timestamp": "2024-08-20T00:53:32.048977+00:00",
   "repo": "astone282/draft-stone-pce-update-open",
   "labels": [
     {
@@ -84,24 +84,26 @@
       "id": "PR_kwDOMhFslc54pILQ",
       "title": "Dhruv's Review and suggested changes",
       "url": "https://github.com/astone282/draft-stone-pce-update-open/pull/2",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "dhruvdhody",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-08-17T15:03:28Z",
-      "updatedAt": "2024-08-17T15:03:29Z",
+      "updatedAt": "2024-08-19T18:06:29Z",
       "baseRepository": "astone282/draft-stone-pce-update-open",
       "baseRefName": "main",
       "baseRefOid": "d3bae074ebb25206ac07b2cd09b3940b8102bc86",
       "headRepository": "dhruvdhody/draft-stone-pce-update-open",
       "headRefName": "main",
       "headRefOid": "2875a0bf6d3709f78f2d974897d4dcae844f18dc",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-08-19T18:06:28Z",
+      "mergedAt": "2024-08-19T18:06:28Z",
+      "mergedBy": "astone282",
+      "mergeCommit": {
+        "oid": "1cfa3140adc6b9cdb4881543a1223472a025d70f"
+      },
       "comments": [],
       "reviews": []
     }
