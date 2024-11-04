@@ -140,20 +140,22 @@ IANA is requested to allocate a new bit value in the "Open Object Flag Field" re
 
 IANA is requested to allocate a new Notification-type value in the "Notification Object" registry:
 
-| Notification-type | Name              | Reference       |
-| :--- |    :----:               |          ---: |
-| TBD2 | Open-Refresh | This document |
-|      | Notification-value | |
-|      | 1: Refresh the Open information | |
+| Notification-type | Name         | Notification-value              | Reference     |
+|--------------------|--------------|---------------------------------|---------------|
+| TBD2               | Open-Refresh | 0: Unassigned                   | This document |
+|                    |              | 1: Refresh the Open information | This document |
 
 
 ##  PCEP Error
 
 IANA is requested to allocate a new Error-type value in the "PCEP-ERROR Object Error Types and Values" registry:
 
-| Error-type | Meaning              | Error-value |Reference       |
-| :--- |    :----:               | :----:|         ---: |
-| TBD3 | Open-Refresh Error | 1: Open-Refresh is not supported| This document |
+| Error-type | Meaning            | Error-value                      | Reference     |
+|------------|--------------------|----------------------------------|---------------|
+| TBD3       | Open-Refresh Error | 0: Unassigned                    | This document |
+|            |                    | 1: Open-Refresh is not supported | This document |
+
+
 
 --- back
 
