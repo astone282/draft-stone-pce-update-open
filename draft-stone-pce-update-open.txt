@@ -5,10 +5,10 @@
 PCE Working Group                                               A. Stone
 Internet-Draft                                                     Nokia
 Intended status: Standards Track                                   C. Li
-Expires: 20 February 2025                                         Huawei
+Expires: 8 May 2025                                               Huawei
                                                                 S. Sidor
                                                                    Cisco
-                                                          19 August 2024
+                                                         4 November 2024
 
 
  PCE Communication Protocol (PCEP) extensions for updating Open Message
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 February 2025.
+   This Internet-Draft will expire on 8 May 2025.
 
 Copyright Notice
 
@@ -284,18 +284,17 @@ Table of Contents
    IANA is requested to allocate a new Notification-type value in the
    "Notification Object" registry:
 
-        +===================+====================+===============+
-        | Notification-type |        Name        |     Reference |
-        +===================+====================+===============+
-        | TBD2              |    Open-Refresh    | This document |
-        +-------------------+--------------------+---------------+
-        |                   | Notification-value |               |
-        +-------------------+--------------------+---------------+
-        |                   |   1: Refresh the   |               |
-        |                   |  Open information  |               |
-        +-------------------+--------------------+---------------+
+    +===================+==============+====================+=========+
+    | Notification-type | Name         | Notification-value |Reference|
+    +===================+==============+====================+=========+
+    | TBD2              | Open-Refresh | 0: Unassigned      |This     |
+    |                   |              |                    |document |
+    +-------------------+--------------+--------------------+---------+
+    |                   |              | 1: Refresh the     |This     |
+    |                   |              | Open information   |document |
+    +-------------------+--------------+--------------------+---------+
 
-                                 Table 2
+                                  Table 2
 
 8.3.  PCEP Error
 
@@ -303,10 +302,13 @@ Table of Contents
    ERROR Object Error Types and Values" registry:
 
     +============+====================+==================+===========+
-    | Error-type |      Meaning       |   Error-value    | Reference |
+    | Error-type | Meaning            | Error-value      | Reference |
     +============+====================+==================+===========+
-    | TBD3       | Open-Refresh Error | 1: Open-Refresh  |      This |
-    |            |                    | is not supported |  document |
+    | TBD3       | Open-Refresh Error | 0: Unassigned    | This      |
+    |            |                    |                  | document  |
+    +------------+--------------------+------------------+-----------+
+    |            |                    | 1: Open-Refresh  | This      |
+    |            |                    | is not supported | document  |
     +------------+--------------------+------------------+-----------+
 
                                  Table 3
@@ -336,17 +338,17 @@ Table of Contents
               Computation Element Communication Protocol (PCEP)
               extension to advertise the PCE Controlled Identifier
               Space", Work in Progress, Internet-Draft, draft-ietf-pce-
-              controlled-id-space-00, 4 June 2024,
+              controlled-id-space-01, 21 October 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-pce-
-              controlled-id-space-00>.
+              controlled-id-space-01>.
 
    [I-D.ietf-pce-state-sync]
-              Litkowski, S., Sivabalan, S., Li, C., and H. Zheng, "Inter
-              Stateful Path Computation Element (PCE) Communication
-              Procedures.", Work in Progress, Internet-Draft, draft-
-              ietf-pce-state-sync-07, 17 March 2024,
+              Litkowski, S., Sivabalan, S., Li, C., and H. Zheng,
+              "Procedures for Communication between Stateful Path
+              Computation Elements", Work in Progress, Internet-Draft,
+              draft-ietf-pce-state-sync-09, 21 October 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-pce-
-              state-sync-07>.
+              state-sync-09>.
 
    [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
               Code: The Implementation Status Section", BCP 205,
