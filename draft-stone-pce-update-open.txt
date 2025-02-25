@@ -5,10 +5,10 @@
 PCE Working Group                                               A. Stone
 Internet-Draft                                                     Nokia
 Intended status: Standards Track                                   C. Li
-Expires: 8 May 2025                                               Huawei
+Expires: 29 August 2025                                           Huawei
                                                                 S. Sidor
                                                                    Cisco
-                                                         4 November 2024
+                                                        25 February 2025
 
 
  PCE Communication Protocol (PCEP) extensions for updating Open Message
@@ -48,11 +48,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 May 2025.
+   This Internet-Draft will expire on 29 August 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -343,12 +343,12 @@ Table of Contents
               controlled-id-space-01>.
 
    [I-D.ietf-pce-state-sync]
-              Litkowski, S., Sivabalan, S., Li, C., and H. Zheng,
+              Zheng, H., Litkowski, S., Sivabalan, S., and C. Li,
               "Procedures for Communication between Stateful Path
               Computation Elements", Work in Progress, Internet-Draft,
-              draft-ietf-pce-state-sync-09, 21 October 2024,
+              draft-ietf-pce-state-sync-11, 13 January 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-pce-
-              state-sync-09>.
+              state-sync-11>.
 
    [RFC7942]  Sheffer, Y. and A. Farrel, "Improving Awareness of Running
               Code: The Implementation Status Section", BCP 205,
